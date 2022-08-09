@@ -118,27 +118,62 @@ class DataIO {
 }
 
 class TimeTable {
-    String[][] tableBuffer = new String[6][10];
+    static Division[] timeTable;
 
-    public static void lectureCombination(int lectureNum) {
-        for (int i = 0; i < lectureNum; )
+    void generateTable(int lectureNum) {
+        timeTable = new Division[lectureNum + 1];
+    }
+
+    void lectureCombination(Lecture[] lectureArchive, int depth) {
+        for (int i = 0; i < lectureArchive[depth].divisionNum; i++) {
+            boolean flag = false;
+            for (int j = 0; j < depth; j++) {
+                if ((lectureArchive[depth].division[i].time.equals(timeTable[j].time)) && (lectureArchive[depth].division[i].day.equals(timeTable[j].day))) {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag) {
+                timeTable[depth] = lectureArchive[depth].division[i];
+                break;
+            }
+        }
+    }
+
+    void printTable(Lecture[] lectureArchive) {
+        for (int i = 0; i < timeTable.length - 1; i++) {
+            System.out.println("강의"+ (i + 1));
+            System.out.println("강의명: "+ lectureArchive[i].getName());
+            System.out.println("교수: " + timeTable[i].getProfessor());
+            System.out.println("요일: " + timeTable[i].getDay());
+            System.out.println("시간: " + timeTable[i].getTime());
+            System.out.println();
+        }
     }
 }
 
 public class Main {
     static int lectureNum;
     static Lecture[] lectureArchive;
+
     public static void main(String[] args) {
         lectureNum = DataIO.setLectureNum();
         lectureArchive = new Lecture[lectureNum];
+        TimeTable table = new TimeTable();
 
         for (int i = 0; i < lectureNum; i++) {
             lectureArchive[i] = DataIO.setLectureData(i);
         }
 
-        System.out.println("====================\n        결과\n====================");
-        DataIO.printLectureInfo(lectureArchive);
+        //System.out.println("====================\n        결과\n====================");
+        //DataIO.printLectureInfo(lectureArchive);
 
-        TimeTable.lectureCombination(lectureNum);
+        table.generateTable(lectureNum);
+        for (int i = 0; i < lectureNum; i++) {
+            table.lectureCombination(lectureArchive, i);
+        }
+
+        table.printTable(lectureArchive);
     }
 }
