@@ -115,52 +115,71 @@ class DataIO {
             System.out.println();
         }
     }
+
+    public static String setFreeDay() {
+        System.out.print("공강 요일: ");
+        return scanner.next();
+    }
 }
 
 class TimeTable {
-    static Division[] timeTable;
+    static Division[] tableBuffer;
+    int timeTableIndex = 0;
+    int count = 0;
+    static Division[][] timeTable;
 
     void generateTable(int lectureNum) {
-        timeTable = new Division[lectureNum + 1];
+        tableBuffer = new Division[lectureNum];
+        timeTable = new Division[1000][];
     }
 
-    void lectureCombination(Lecture[] lectureArchive, int depth) {
+    void lectureCombination(Lecture[] lectureArchive, int depth, int lectureNum, String freeDay) {
+        if (depth == lectureNum) {
+            return;
+        }
+
         for (int i = 0; i < lectureArchive[depth].divisionNum; i++) {
-            boolean flag = false;
+            if (depth == 0)
+                count = 0;
+            boolean isReserved = false;
             for (int j = 0; j < depth; j++) {
-                if ((lectureArchive[depth].division[i].time.equals(timeTable[j].time)) && (lectureArchive[depth].division[i].day.equals(timeTable[j].day))) {
-                    flag = true;
+                if (((lectureArchive[depth].division[i].time.equals(tableBuffer[j].time)) && (lectureArchive[depth].division[i].day.equals(tableBuffer[j].day))) || (lectureArchive[depth].division[i].day.equals(freeDay))) {
+                    isReserved = true;
                     break;
                 }
             }
 
-            if (!flag) {
-                timeTable[depth] = lectureArchive[depth].division[i];
-                break;
+            if (!isReserved) {
+                tableBuffer[depth] = lectureArchive[depth].division[i];
+                count++;
+                lectureCombination(lectureArchive, depth + 1, lectureNum, freeDay);
+            }
+
+            if (depth + 1 == lectureNum && count == lectureNum) {
+                timeTable[timeTableIndex++] = tableBuffer.clone();
+                count--;
             }
         }
     }
 
     void printTable(Lecture[] lectureArchive) {
-        for (int i = 0; i < timeTable.length - 1; i++) {
-            System.out.println("강의"+ (i + 1));
-            System.out.println("강의명: "+ lectureArchive[i].getName());
-            System.out.println("교수: " + timeTable[i].getProfessor());
-            System.out.println("요일: " + timeTable[i].getDay());
-            System.out.println("시간: " + timeTable[i].getTime());
-            System.out.println();
+        for (int i = 0; i < timeTableIndex; i++) {
+            System.out.println("시간표" + (i + 1));
+            for (int j = 0; j < timeTable[i].length; j++) {
+                System.out.println("  강의" + (j + 1));
+                System.out.println("  강의명: " + lectureArchive[j].getName() + "\t교수: " + timeTable[i][j].getProfessor() + "\t요일: " + timeTable[i][j].getDay() + "\t시간: " + timeTable[i][j].getTime());
+            }
+            System.out.println("=======================================================");
         }
     }
 }
 
 public class Main {
-    static int lectureNum;
-    static Lecture[] lectureArchive;
-
     public static void main(String[] args) {
-        lectureNum = DataIO.setLectureNum();
-        lectureArchive = new Lecture[lectureNum];
+        int lectureNum = DataIO.setLectureNum();
+        Lecture[] lectureArchive = new Lecture[lectureNum];
         TimeTable table = new TimeTable();
+        String freeDay = DataIO.setFreeDay();
 
         for (int i = 0; i < lectureNum; i++) {
             lectureArchive[i] = DataIO.setLectureData(i);
@@ -170,9 +189,7 @@ public class Main {
         //DataIO.printLectureInfo(lectureArchive);
 
         table.generateTable(lectureNum);
-        for (int i = 0; i < lectureNum; i++) {
-            table.lectureCombination(lectureArchive, i);
-        }
+        table.lectureCombination(lectureArchive, 0, lectureNum, freeDay);
 
         table.printTable(lectureArchive);
     }
