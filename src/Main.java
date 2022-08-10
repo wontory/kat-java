@@ -125,7 +125,6 @@ class DataIO {
 class TimeTable {
     static Division[] tableBuffer;
     int timeTableIndex = 0;
-    int count = 0;
     static Division[][] timeTable;
 
     void generateTable(int lectureNum) {
@@ -135,12 +134,11 @@ class TimeTable {
 
     void lectureCombination(Lecture[] lectureArchive, int depth, int lectureNum, String freeDay) {
         if (depth == lectureNum) {
+            timeTable[timeTableIndex++] = tableBuffer.clone();
             return;
         }
 
         for (int i = 0; i < lectureArchive[depth].divisionNum; i++) {
-            if (depth == 0)
-                count = 0;
             boolean isReserved = false;
             for (int j = 0; j < depth; j++) {
                 if (((lectureArchive[depth].division[i].time.equals(tableBuffer[j].time)) && (lectureArchive[depth].division[i].day.equals(tableBuffer[j].day))) || (lectureArchive[depth].division[i].day.equals(freeDay))) {
@@ -151,13 +149,7 @@ class TimeTable {
 
             if (!isReserved) {
                 tableBuffer[depth] = lectureArchive[depth].division[i];
-                count++;
                 lectureCombination(lectureArchive, depth + 1, lectureNum, freeDay);
-            }
-
-            if (depth + 1 == lectureNum && count == lectureNum) {
-                timeTable[timeTableIndex++] = tableBuffer.clone();
-                count--;
             }
         }
     }
@@ -178,6 +170,7 @@ public class Main {
     public static void main(String[] args) {
         int lectureNum = DataIO.setLectureNum();
         Lecture[] lectureArchive = new Lecture[lectureNum];
+
         TimeTable table = new TimeTable();
         String freeDay = DataIO.setFreeDay();
 
