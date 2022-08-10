@@ -140,10 +140,15 @@ class TimeTable {
 
         for (int i = 0; i < lectureArchive[depth].divisionNum; i++) {
             boolean isReserved = false;
-            for (int j = 0; j < depth; j++) {
-                if (((lectureArchive[depth].division[i].time.equals(tableBuffer[j].time)) && (lectureArchive[depth].division[i].day.equals(tableBuffer[j].day))) || (lectureArchive[depth].division[i].day.equals(freeDay))) {
-                    isReserved = true;
-                    break;
+            if (lectureArchive[depth].division[i].day.equals(freeDay)) {
+                isReserved = true;
+            }
+            else {
+                for (int j = 0; j < depth; j++) {
+                    if (lectureArchive[depth].division[i].time.equals(tableBuffer[j].time) && lectureArchive[depth].division[i].day.equals(tableBuffer[j].day)) {
+                        isReserved = true;
+                        break;
+                    }
                 }
             }
 
