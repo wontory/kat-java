@@ -145,7 +145,7 @@ class TimeTable {
             }
             else {
                 for (int j = 0; j < depth; j++) {
-                    if (lectureArchive[depth].division[i].time.equals(tableBuffer[j].time) && lectureArchive[depth].division[i].day.equals(tableBuffer[j].day)) {
+                    if (lectureArchive[depth].division[i].time.contains(tableBuffer[j].time.charAt(0)+"") && tableBuffer[j].time.contains(lectureArchive[depth].division[i].time.charAt(0)+"") && lectureArchive[depth].division[i].day.equals(tableBuffer[j].day)) {
                         isReserved = true;
                         break;
                     }
