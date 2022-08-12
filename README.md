@@ -1,8 +1,8 @@
 # KAT
 Kyonggi University Automatic Timetable Generator
-
----
-
+  
+&nbsp;  
+  
 - 사용 언어: Java  
 - 개발 환경: IntelliJ, Eclipse
   
