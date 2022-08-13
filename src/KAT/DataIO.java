@@ -62,7 +62,14 @@ class DataIO {
     }
 
     public static String setFreeDay() {
-        System.out.print("공강 요일: ");
-        return scanner.next();
+        System.out.print("공강인 요일을 선택하시겠습니까? Y/N ");
+        String answer = scanner.next();
+        if (answer.charAt(0) == 'Y') {
+            System.out.print("공강 요일: ");
+            return scanner.next();
+        }
+        else {
+            return null;
+        }
     }
 }
