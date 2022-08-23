@@ -1,7 +1,7 @@
 package KAT;
 
 public class Main {
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
         // 수강 예정인 강의 수 입력
         int lectureNum = DataIO.setLectureNum();
         Lecture[] lectureArchive = new Lecture[lectureNum];
@@ -18,13 +18,16 @@ public class Main {
         // 공강 요일 입력
         String freeDay = DataIO.setFreeDay();
 
-        // 시간표 조합 버퍼 생성
-        Combination combination = new Combination();
+        /* 점심시간 확보 기능 추가 예정 */
+
+        // 시간표 메모리 생성
+        Combination table = new Combination();
+        table.generateTable(lectureNum);
 
         // 시간표 조합
-        combination.lectureCombination(lectureArchive, 0, lectureNum, freeDay);
+        table.lectureCombination(lectureArchive, 0, lectureNum, freeDay);
 
-        // 시간표 조합 결과 출력
-        combination.printCombination();
+        // 시간표 출력
+        table.printCombination(lectureArchive);
     }
 }

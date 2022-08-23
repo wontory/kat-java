@@ -37,34 +37,14 @@ class DataIO {
         Division division = new Division();
 
         System.out.println("분반" + (num + 1));
-
         System.out.print("교수: ");
         division.setProfessor(scanner.next());
-
         System.out.print("요일: ");
         division.setDay(scanner.next());
-
         System.out.print("시간: ");
         division.setTime(scanner.next(), credit);
 
         return division;
-    }
-
-    public static void printLectureInfo(Lecture[] archive) {
-        for (int i = 0; i < archive.length; i++) {
-            System.out.println("과목" + (i + 1));
-            System.out.println("과목명: " + archive[i].getName());
-            System.out.println("학점: " + archive[i].getCredit());
-            System.out.println("분반 수: " + archive[i].getDivisionNum());
-            for (int j = 0; j < archive[i].division.length; j++) {
-                System.out.println();
-                System.out.println("  분반" + (j + 1));
-                System.out.println("  교수: " + archive[i].division[j].getProfessor());
-                System.out.println("  요일: " + archive[i].division[j].getDay());
-                System.out.println("  시간: " + archive[i].division[j].getTime());
-            }
-            System.out.println();
-        }
     }
 
     public static String setFreeDay() {

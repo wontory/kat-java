@@ -23,6 +23,7 @@ class Division {
             default:
                 System.out.println("요일을 잘못 입력하셨습니다. 다시 입력해주세요. (월, 화, 수, 목, 금)");
                 this.setDay(scanner.next());
+                break;
         }
     }
 
