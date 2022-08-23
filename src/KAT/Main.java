@@ -21,13 +21,13 @@ public class Main {
         /* 점심시간 확보 기능 추가 예정 */
 
         // 시간표 메모리 생성
-        TimeTable table = new TimeTable();
+        Combination table = new Combination();
         table.generateTable(lectureNum);
 
         // 시간표 조합
         table.lectureCombination(lectureArchive, 0, lectureNum, freeDay);
 
         // 시간표 출력
-        table.printTable(lectureArchive);
+        table.printCombination(lectureArchive);
     }
 }
