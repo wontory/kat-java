@@ -10,7 +10,7 @@ class Timetable implements Cloneable{
             {0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0}};
-    protected ArrayList<Division> division = new ArrayList<Division>();
+    protected ArrayList<Division> division = new ArrayList<>();
 
     protected void add(Division division) {
         this.division.add(division);

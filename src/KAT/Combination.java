@@ -6,7 +6,7 @@ import java.util.Arrays;
 class Combination {
     static final String[] week = {"월","화","수","목","금"};
     static Timetable combinationBuffer = new Timetable();
-    static ArrayList<Timetable> combination = new ArrayList<Timetable>();
+    static ArrayList<Timetable> combination = new ArrayList<>();
 
 
     void lectureCombination(Lecture[] lectureArchive, int depth, int lectureNum, String freeDay) throws CloneNotSupportedException {
@@ -41,7 +41,7 @@ class Combination {
         int j = 0;
         for (Timetable t: combination) {
             System.out.println("시간표" + (j++));
-            System.out.println(Arrays.deepToString(t.schedule.));
+            System.out.println(Arrays.deepToString(t.schedule));
             for (int i = 0; i < t.division.size(); i++) {
                 System.out.println("  강의" + (i + 1));
                 System.out.println("\t교수: " + t.division.get(i).getProfessor());
