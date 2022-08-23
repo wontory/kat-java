@@ -41,7 +41,7 @@ class Combination {
         int j = 0;
         for (Timetable t: combination) {
             System.out.println("시간표" + (j++));
-            System.out.println(Arrays.deepToString(t.schedule));
+            System.out.println(Arrays.deepToString(t.schedule.));
             for (int i = 0; i < t.division.size(); i++) {
                 System.out.println("  강의" + (i + 1));
                 System.out.println("\t교수: " + t.division.get(i).getProfessor());
