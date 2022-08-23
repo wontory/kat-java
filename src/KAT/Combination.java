@@ -7,7 +7,7 @@ class Combination {
     static Division[] combinationBuffer;
     static ArrayList<Division[]> combination;
 
-    void generateTable(int lectureNum) {
+    Combination (int lectureNum) {
         combinationBuffer = new Division[lectureNum];
         combination = new ArrayList<>();
     }
