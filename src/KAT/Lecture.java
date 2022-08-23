@@ -1,10 +1,10 @@
 package KAT;
 
 class Lecture {
-    String name;
-    int credit;
-    int divisionNum;
-    Division[] division;
+    private String name;
+    private int credit;
+    private int divisionNum;
+    protected Division[] division;
 
     public void setName(String name) { this.name = name; }
 
