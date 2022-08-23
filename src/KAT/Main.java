@@ -11,10 +11,6 @@ public class Main {
             lectures[i] = DataIO.setLectureData(i);
         }
 
-        // 테스트용 출력 코드
-        /* System.out.println("====================\n        결과\n===================="); */
-        /* KAT.DataIO.printLectureInfo(lectures); */
-
         // 공강 요일 입력
         String freeDay = DataIO.setFreeDay();
 
