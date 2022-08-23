@@ -16,7 +16,7 @@ class DataIO {
 
         Lecture lecture = new Lecture();
 
-        System.out.println("과목" + (num + 1));
+        System.out.println("과목 " + (num + 1));
         System.out.print("과목명: ");
         lecture.setName(scanner.next());
         System.out.print("학점: ");
@@ -24,10 +24,10 @@ class DataIO {
         System.out.print("분반 수: ");
         lecture.setDivisionNum(scanner.nextInt());
 
-        lecture.division = new Division[lecture.getDivisionNum()];
+        lecture.divisions = new Division[lecture.getDivisionNum()];
 
         for (int i = 0; i < lecture.getDivisionNum(); i++) {
-            lecture.division[i] = setDivisionData(i, lecture.getCredit());
+            lecture.divisions[i] = setDivisionData(i, lecture.getCredit());
         }
 
         return lecture;
@@ -36,7 +36,7 @@ class DataIO {
     public static Division setDivisionData(int num, int credit) {
         Division division = new Division();
 
-        System.out.println("분반" + (num + 1));
+        System.out.println("분반 " + (num + 1));
         System.out.print("교수: ");
         division.setProfessor(scanner.next());
         System.out.print("요일: ");

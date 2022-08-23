@@ -4,7 +4,7 @@ class Lecture {
     private String name;
     private int credit;
     private int divisionNum;
-    protected Division[] division;
+    protected Division[] divisions;
 
     public void setName(String name) { this.name = name; }
 
