@@ -1,3 +1,5 @@
+![KAT_logo.png]()
+
 # KAT
 Kyonggi University Automatic Timetable Generator
   
