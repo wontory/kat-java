@@ -1,5 +1,6 @@
 package KAT;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 class Division {
@@ -14,16 +15,16 @@ class Division {
     }
 
     public void setDay(String day) {
-        switch(day) {
-            case "월": this.day = 0; break;
-            case "화": this.day = 1; break;
-            case "수": this.day = 2; break;
-            case "목": this.day = 3; break;
-            case "금": this.day = 4; break;
-            default:
+        switch (day) {
+            case "월" -> this.day = 0;
+            case "화" -> this.day = 1;
+            case "수" -> this.day = 2;
+            case "목" -> this.day = 3;
+            case "금" -> this.day = 4;
+            default -> {
                 System.out.println("요일을 잘못 입력하셨습니다. 다시 입력해주세요. (월, 화, 수, 목, 금)");
                 this.setDay(scanner.next());
-                break;
+            }
         }
     }
 

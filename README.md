@@ -11,7 +11,19 @@ Kyonggi University Automatic Timetable Generator
 3. 완성된 시간표들을 보여줍니다.
   
 &nbsp;  
+  
+### How To Run
+1. MAC
+    1. 터미널을 실행하고.
+    2. "java -jar " 타이핑 후 (스페이스 바 주의)
+    3. jar 파일을 터미널 안으로 끌어와줍니다.
+    4. 엔터 키를 누르면 실행됩니다.
 
+2. Windows
+    1. 실행 파일을 더블 클릭하여 실행합니다.
+  
+&nbsp;  
+  
 ### License
 - GNU General Public License v3.0
 
