@@ -24,7 +24,10 @@ Kyonggi University Automatic Timetable Generator
     4. 엔터 키를 누르면 실행됩니다.
 
 2. Windows
-    1. 실행 파일을 더블 클릭하여 실행합니다.
+    1. jar 파일을 마우스 우클릭하여 바로가기를 만들어준 후
+    2. 바로가기를 마우스 우클릭한 다음 속성 클릭
+    3. 속성 - 경로의 맨 앞에 "java -jar " 입력 후 확인(스페이스 바 주의)
+    4. 바로가기 더블클릭으로 실행
   
 &nbsp;  
   
