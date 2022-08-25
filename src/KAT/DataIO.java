@@ -1,5 +1,6 @@
 package KAT;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 class DataIO {
@@ -11,9 +12,6 @@ class DataIO {
     }
 
     public static Lecture setLectureData(int num) {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-
         Lecture lecture = new Lecture();
 
         System.out.println("과목 " + (num + 1));
@@ -48,9 +46,6 @@ class DataIO {
     }
 
     public static String setFreeDay() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-
         System.out.print("공강인 요일을 선택하시겠습니까? Y/N ");
         String answer = scanner.next();
         if (answer.charAt(0) == 'Y' || answer.charAt(0) == 'y') {
