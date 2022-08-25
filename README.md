@@ -5,7 +5,7 @@ Kyonggi University Automatic Timetable Generator
   
 &nbsp;  
   
-[다운로드](https://github.com/ssangttuce/KAT/releases/tag/v1.0.0)
+[다운로드](https://github.com/wontory/KAT/releases/tag/v1.0.0)
   
 &nbsp;  
   
