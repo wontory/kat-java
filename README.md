@@ -17,7 +17,7 @@ Kyonggi University Automatic Timetable Generator
 &nbsp;  
   
 ### How To Run
-1. MAC
+1. Mac
     1. 터미널을 실행하고.
     2. "java -jar " 타이핑 후 (스페이스 바 주의)
     3. jar 파일을 터미널 안으로 끌어와줍니다.
