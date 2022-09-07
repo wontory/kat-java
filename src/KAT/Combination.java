@@ -22,10 +22,11 @@ class Combination {
             boolean isReserved = false;
             if (week[lectures[depth].divisions[i].getDay()].equals(freeDay)) {
                 isReserved = true;
-            }
-            else {
+            } else {
                 for (int j = 0; j < depth; j++) {
-                    if ((lectures[depth].divisions[i].getTime().contains(combinationBuffer[j].getTime().charAt(0)+"") || combinationBuffer[j].getTime().contains(lectures[depth].divisions[i].getTime().charAt(0)+"")) && lectures[depth].divisions[i].getDay() == (combinationBuffer[j].getDay())) {
+                    if ((lectures[depth].divisions[i].getTime().contains(combinationBuffer[j].getTime().charAt(0)+"") ||
+                            combinationBuffer[j].getTime().contains(lectures[depth].divisions[i].getTime().charAt(0)+"")) &&
+                            lectures[depth].divisions[i].getDay() == (combinationBuffer[j].getDay())) {
                         isReserved = true;
                         break;
                     }
@@ -56,7 +57,9 @@ class Combination {
     void printCombination(Lecture[] lectures, int i) {
         for (int j = 0; j < combinations.get(i).length; j++) {
             System.out.println("\t강의" + (j + 1));
-            System.out.println("\t" + lectures[j].getName() + "  |  " + combinations.get(i)[j].getProfessor() + "  |  " + week[combinations.get(i)[j].getDay()] + " " + combinations.get(i)[j].getTime());
+            System.out.println("\t" + lectures[j].getName() + "  |  " +
+                    combinations.get(i)[j].getProfessor() + "  |  " +
+                    week[combinations.get(i)[j].getDay()] + " " + combinations.get(i)[j].getTime());
         }
     }
 }

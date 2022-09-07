@@ -1,6 +1,5 @@
 package KAT;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 class DataIO {
@@ -51,11 +50,9 @@ class DataIO {
         if (answer.charAt(0) == 'Y' || answer.charAt(0) == 'y') {
             System.out.print("공강 요일: ");
             return scanner.next();
-        }
-        else if (answer.charAt(0) == 'N' || answer.charAt(0) == 'n') {
+        } else if (answer.charAt(0) == 'N' || answer.charAt(0) == 'n') {
             return null;
-        }
-        else {
+        } else {
             System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
             return setFreeDay();
         }
