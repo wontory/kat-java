@@ -1,5 +1,6 @@
 package KAT;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 class DataIO {
@@ -55,6 +56,46 @@ class DataIO {
         } else {
             System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
             return setFreeDay();
+        }
+    }
+
+    public static int chooseResultOption() {
+        System.out.print(Combination.combinations.size() + "개의 시간표가 생성되었습니다. 보기 옵션을 선택해주세요.\n" +
+                "1. 하나씩 보기    2. 한번에 모두 보기    3. 프로그램 종료\n입력: ");
+        int userInput = scanner.nextInt();
+        if (userInput == 3) {
+            System.out.print("프로그램을 종료합니다.");
+            System.exit(0);
+        } else if (userInput < 1 || userInput > 3) {
+            while (true) {
+                System.out.print("잘못 입력하셨습니다. 다시 입력해주세요.\n입력: ");
+                userInput = scanner.nextInt();
+                if (userInput == 3) {
+                    System.exit(0);
+                } else if (userInput >= 1 && userInput < 3) {
+                    break;
+                }
+            }
+        }
+
+        return userInput;
+    }
+
+    public static void printResult(int userInput, Lecture[] lectures, Combination combination, TimeTable[] timeTables) throws IOException {
+        System.out.println("\n=================================================================\n");
+        for (int i = 0; i < Combination.combinations.size(); i++) {
+            System.out.print("  시간표 " + (i + 1));
+            if (userInput == 1) {
+                System.out.print(" / " + Combination.combinations.size());
+            }
+            System.out.println("\n");
+            timeTables[i].printTable();
+            combination.printCombination(lectures, i);
+            if (userInput == 1) {
+                System.out.print("\n계속하려면 Enter 키를 누르십시오 ...");
+                int waitEnter = System.in.read();
+            }
+            System.out.println("\n=================================================================\n");
         }
     }
 }
