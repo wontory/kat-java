@@ -30,7 +30,7 @@ public class Main {
         int userInput = DataIO.chooseResultOption();
         DataIO.printResult(userInput, lectures, combination, timeTables);
 
-        //프로그램 종료
+        // 프로그램 종료
         System.out.println("시간표 출력이 완료되었습니다. 프로그램을 종료합니다.");
         System.exit(0);
     }
