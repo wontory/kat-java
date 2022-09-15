@@ -54,7 +54,7 @@ class Combination {
         return timeTables;
     }
 
-    void printCombination(Lecture[] lectures, int i) {
+    void print(Lecture[] lectures, int i) {
         for (int j = 0; j < combinations.get(i).length; j++) {
             System.out.println("\t강의" + (j + 1));
             System.out.println("\t" + lectures[j].getName() + "  |  " +

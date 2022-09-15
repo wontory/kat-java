@@ -28,10 +28,19 @@ public class Main {
 
         // 시간표 결과 출력
         int userInput = DataIO.chooseResultOption();
-        DataIO.printResult(userInput, lectures, combination, timeTables);
+        if (userInput == 3) {
+            DataIO.createFile(lectures, timeTables);
+            System.out.println("""
+
+                    =================================================================
+
+                    txt 파일 생성이 완료되었습니다. 프로그램을 종료합니다.""");
+        } else {
+            DataIO.printResult(userInput, lectures, combination, timeTables);
+            System.out.println("시간표 출력이 완료되었습니다. 프로그램을 종료합니다.");
+        }
 
         // 프로그램 종료
-        System.out.println("시간표 출력이 완료되었습니다. 프로그램을 종료합니다.");
         System.exit(0);
     }
 }
