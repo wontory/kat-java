@@ -1,6 +1,5 @@
 package KAT;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 class Division {
@@ -29,9 +28,9 @@ class Division {
     }
 
     public void setTime(String time, int credit) {
-        if (time.length() == credit)
+        if (time.length() == credit) {
             this.time = time;
-        else {
+        } else {
             System.out.println("시간을 잘못 입력하셨습니다. 다시 입력해주세요. (" + credit + "학점)");
             this.setTime(scanner.next(), credit);
         }
