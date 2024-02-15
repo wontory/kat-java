@@ -1,6 +1,6 @@
 ![KAT_logo](KAT_logo.png)
 
-# KAT
+# KAT (Legacy)
 Kyonggi University Automatic Timetable Generator
   
 &nbsp;  
